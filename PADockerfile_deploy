@@ -1,0 +1,5 @@
+FROM perfectassistant/nearby-api:latest
+COPY .build_lin/release/*.so /perfect-deployed/nearby-api/
+COPY .build_lin/release/nearby-api /perfect-deployed/nearby-api/
+RUN rm -rf /var/lib/apt/lists/*
+CMD cd /perfect-deployed/nearby-api/ && ./nearby-api

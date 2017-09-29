@@ -1,0 +1,148 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E71C9F673135F52EEF9E6F1B8D0895D4850F2E7F+++D17208E" : 0,
+    "9197B75B1BC29921D6E3B1CCDC2B258350009F3A+++CD54FCD" : 0,
+    "9A1954406EDB7889917613180D505A9D1AF9E8C7+++9010C2E" : 0,
+    "7A6E86399764EA793385C76541C62266A3CFE230+++B474C82" : 0,
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++BB6DF15" : 9223372036854775807,
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++B96ED1A" : 9223372036854775807,
+    "261404893310EC1BAED984EFCA9367605CC71089+++12260F2" : 9223372036854775807,
+    "3B905509A4DD1F5305D27EF37A9F71F239F93941+++B8085CF" : 0,
+    "024F03EBC39374C255EF4B6582114D2A31839058+++7EA7E8D" : 0,
+    "E2306DAE0C98D148736A05084B6FAB44F03B4909+++1740436" : 0,
+    "A47270401C4E12170692FDEB5A90EE8AC80F500F+++D44B1DF" : 0,
+    "735A06A83BD3E78D8C3B53C09F33A6FB7CEBF8E1+++2FB723E" : 0,
+    "85BCF30FFA91EE00CA6E120820040F21F5813686+++D4E3276" : 0,
+    "615FD99B652E80AC2E813EEEE7964BA10A9886D5+++8FDDD4B" : 0,
+    "6F1260245BD69EFA9A05D126763C86280510C6E1+++2B06C88" : 0,
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++B2FAFF0" : 9223372036854775807,
+    "C4127C9B9C8FDF608B532AD72407863CE2797629+++8709E4E" : 0,
+    "7E97FD2E547F76C4288DDD5313C743FD4F6EECC0+++C48AAAD" : 9223372036854775807,
+    "DCD994A20FFF69E73D7DE28EB512BBF004934554+++4B7FCE2" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9A1F7F7C-8522-4792-A29E-A6EEFBDF484E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E71C9F673135F52EEF9E6F1B8D0895D4850F2E7F+++D17208E" : "nearby-api\/.build\/checkouts\/Perfect-Crypto.git--5196635702121641122\/",
+    "9197B75B1BC29921D6E3B1CCDC2B258350009F3A+++CD54FCD" : "nearby-api\/.build\/checkouts\/Perfect-HTTP.git--6392294032632002019\/",
+    "9A1954406EDB7889917613180D505A9D1AF9E8C7+++9010C2E" : "nearby-api\/.build\/checkouts\/Perfect-XML.git--3069111962689080115\/",
+    "7A6E86399764EA793385C76541C62266A3CFE230+++B474C82" : "nearby-api\/.build\/checkouts\/SwiftMoment.git--2912679366309029826\/",
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++BB6DF15" : "nearby-api\/.build\/checkouts\/CryptoSwift.git--6440749087414195235\/",
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++B96ED1A" : "nearby-api\/.build\/checkouts\/CryptoSwift--5560562967812595289\/",
+    "261404893310EC1BAED984EFCA9367605CC71089+++12260F2" : "..\/..",
+    "3B905509A4DD1F5305D27EF37A9F71F239F93941+++B8085CF" : "nearby-api\/.build\/checkouts\/Perfect-CURL.git-8858624468322681619\/",
+    "024F03EBC39374C255EF4B6582114D2A31839058+++7EA7E8D" : "nearby-api\/.build\/checkouts\/Perfect-PostgreSQL.git--5405562302171386633\/",
+    "E2306DAE0C98D148736A05084B6FAB44F03B4909+++1740436" : "nearby-api\/.build\/checkouts\/PerfectLib.git-3712999737848873669\/",
+    "A47270401C4E12170692FDEB5A90EE8AC80F500F+++D44B1DF" : "nearby-api\/.build\/checkouts\/StORM.git-6077292811663054913\/",
+    "735A06A83BD3E78D8C3B53C09F33A6FB7CEBF8E1+++2FB723E" : "nearby-api\/.build\/checkouts\/Perfect-Logger.git--429101405906730625\/",
+    "85BCF30FFA91EE00CA6E120820040F21F5813686+++D4E3276" : "nearby-api\/.build\/checkouts\/Postgres-StORM.git--2456018558473457460\/",
+    "615FD99B652E80AC2E813EEEE7964BA10A9886D5+++8FDDD4B" : "nearby-api\/.build\/checkouts\/Perfect-Thread.git-6541237758607105655\/",
+    "6F1260245BD69EFA9A05D126763C86280510C6E1+++2B06C88" : "nearby-api\/.build\/checkouts\/Perfect-Net.git-3268755499654502659\/",
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++B2FAFF0" : "nearby-api\/.build\/checkouts\/CryptoSwift.git--6440749087414195235\/",
+    "C4127C9B9C8FDF608B532AD72407863CE2797629+++8709E4E" : "nearby-api\/.build\/checkouts\/Perfect-HTTPServer.git--6671958091389663080\/",
+    "7E97FD2E547F76C4288DDD5313C743FD4F6EECC0+++C48AAAD" : "nearby-api\/.build\/checkouts\/JSONWebToken.swift--4289912536576522958\/",
+    "DCD994A20FFF69E73D7DE28EB512BBF004934554+++4B7FCE2" : "nearby-api\/.build\/checkouts\/Perfect-COpenSSL.git--4744624199947727386\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "nearby-api",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "nearby-api.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-PostgreSQL.git--5405562302171386633",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "024F03EBC39374C255EF4B6582114D2A31839058+++7EA7E8D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:KennedySDias\/EMR-for-NGO.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "261404893310EC1BAED984EFCA9367605CC71089+++12260F2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-CURL.git-8858624468322681619",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B905509A4DD1F5305D27EF37A9F71F239F93941+++B8085CF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-Thread.git-6541237758607105655",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "615FD99B652E80AC2E813EEEE7964BA10A9886D5+++8FDDD4B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-Net.git-3268755499654502659",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6F1260245BD69EFA9A05D126763C86280510C6E1+++2B06C88"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-Logger.git--429101405906730625",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "735A06A83BD3E78D8C3B53C09F33A6FB7CEBF8E1+++2FB723E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/SwiftMoment.git--2912679366309029826",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7A6E86399764EA793385C76541C62266A3CFE230+++B474C82"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Downloads\/nearby-api\/.build\/repositories\/JSONWebToken.swift--4289912536576522958",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E97FD2E547F76C4288DDD5313C743FD4F6EECC0+++C48AAAD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Postgres-StORM.git--2456018558473457460",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "85BCF30FFA91EE00CA6E120820040F21F5813686+++D4E3276"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-HTTP.git--6392294032632002019",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9197B75B1BC29921D6E3B1CCDC2B258350009F3A+++CD54FCD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-XML.git--3069111962689080115",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9A1954406EDB7889917613180D505A9D1AF9E8C7+++9010C2E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/StORM.git-6077292811663054913",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A47270401C4E12170692FDEB5A90EE8AC80F500F+++D44B1DF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Downloads\/nearby-api\/.build\/repositories\/CryptoSwift.git--6440749087414195235",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++B2FAFF0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Downloads\/nearby-api\/.build\/repositories\/CryptoSwift--5560562967812595289",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++B96ED1A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Downloads\/nearby-api\/.build\/repositories\/CryptoSwift--5560562967812595289",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++BB6DF15"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-HTTPServer.git--6671958091389663080",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C4127C9B9C8FDF608B532AD72407863CE2797629+++8709E4E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-COpenSSL.git--4744624199947727386",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DCD994A20FFF69E73D7DE28EB512BBF004934554+++4B7FCE2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/PerfectLib.git-3712999737848873669",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E2306DAE0C98D148736A05084B6FAB44F03B4909+++1740436"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/andrerosa\/Documents\/GIT\/API\/Swift\/nearby-api\/.build\/repositories\/Perfect-Crypto.git--5196635702121641122",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E71C9F673135F52EEF9E6F1B8D0895D4850F2E7F+++D17208E"
+    }
+  ]
+}
