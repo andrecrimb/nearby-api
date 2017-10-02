@@ -31,7 +31,7 @@ func EventsParticRoute() -> Routes{
                     try eventPartic.find([("idevent", idEvent),("uuid",eventPartic.uuid)])
                     
                     if eventPartic.id == 0 {
-                        
+                        eventPartic.idevent = Int(idEvent)!
                         try eventPartic.save{ id in eventPartic.id = id as! Int }
                         
                         try response.setBody(json: ["message": "INSERTED"])
@@ -52,50 +52,39 @@ func EventsParticRoute() -> Routes{
         }
     }
     
-    func getParticByIdEvent(request: HTTPRequest, response: HTTPResponse){
+    func getParticsByIdEvent(request: HTTPRequest, response: HTTPResponse){
         do {
             if let idEvent = request.urlVariables["id"]{
-            
+                
+                let user = User()
                 let eventPartic = EventPartic()
                 
                 try eventPartic.find([("idevent",idEvent)])
                 
                 var partics: [[String: Any]] = []
                 
+                var eventWithUserName : [String: Any]
+                
                 for row in eventPartic.rows(){
-                    partics.append(row.asDictionary())
+                    
+                    try user.get(user.id)
+                    
+                    print("\(user.rows()) ====")
+                    
+                    eventWithUserName = [
+                        "id": row.id,
+                        "idEvent": row.idevent,
+                        "uuid": row.uuid,
+                        "particName": user.name
+                    ]
+                    
+                    partics.append(eventWithUserName)
                 }
                 
                 try response.setBody(json: partics)
                     .setHeader(.contentType, value: "application/json")
                     .completed()
             } else{
-                response.completed(status: .partialContent)
-            }
-        } catch {
-            response.setBody(string: "Error handling request \(error)")
-                .completed(status: .internalServerError)
-        }
-    }
-    
-    func countParticByIdEvent(request: HTTPRequest, response: HTTPResponse){ //WORKING
-        do {
-            if let idEvent = request.urlVariables["id"]{
-                
-                let eventPartic = EventPartic()
-                
-                try eventPartic.find([("idevent",idEvent)])
-                
-                var partics: Int = 0
-                
-                for _ in eventPartic.rows(){
-                    partics = partics + 1
-                }
-                
-                try response.setBody(json: ["partics": partics])
-                    .setHeader(.contentType, value: "application/json")
-                    .completed()
-            } else {
                 response.completed(status: .partialContent)
             }
         } catch {
@@ -184,11 +173,9 @@ func EventsParticRoute() -> Routes{
         
     }
     
-    routes.add(method: .get, uri: "/partic_count/{id}", handler: countParticByIdEvent)
-    
     routes.add(method: .get, uri: "/partic_user_events", handler: getAllEventsByUUID)
     
-    routes.add(method: .get, uri: "/partic/{id}", handler: getParticByIdEvent)
+    routes.add(method: .get, uri: "/partic/{id}", handler: getParticsByIdEvent)
     
     routes.add(method: .delete, uri: "/partic/{id}", handler: deleteParticByID)
     

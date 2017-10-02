@@ -42,7 +42,7 @@
 		<key>PerfectLoggerPackageDescription.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>5</integer>
 		</dict>
 		<key>PerfectNetPackageDescription.xcscheme</key>
 		<dict>
@@ -57,7 +57,7 @@
 		<key>PerfectXMLPackageDescription.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>8</integer>
 		</dict>
 		<key>PostgreSQLPackageDescription.xcscheme</key>
 		<dict>
@@ -67,7 +67,7 @@
 		<key>PostgresStORMPackageDescription.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 		<key>StORMPackageDescription.xcscheme</key>
 		<dict>
@@ -77,7 +77,7 @@
 		<key>SwiftMomentPackageDescription.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>9</integer>
 		</dict>
 		<key>nearby-api-Package.xcscheme_^#shared#^_</key>
 		<dict>
