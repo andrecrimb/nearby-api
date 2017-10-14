@@ -18,6 +18,7 @@ class Event: PostgresStORM {
     var location    : String    = ""
     var eventDate   : String    = ""
     var criator     : Int       = 0
+    var insertdate  : String    = ""
     
     
     override open func table() -> String { return "events" }
@@ -30,7 +31,7 @@ class Event: PostgresStORM {
         location        = this.data["location"]     as? String  ?? ""
         eventDate       = this.data["eventdate"]    as? String  ?? ""
         criator         = this.data["criator"]      as? Int     ?? 0
-        
+        insertdate      = this.data["insertdate"]   as? String  ?? ""
     }
     func rows() -> [Event] {
         var rows = [Event]()
@@ -43,7 +44,6 @@ class Event: PostgresStORM {
     }
     
     func asDictionary() -> [String: Any]{
-        
         return [
             "id"            : self.id,
             "name"          : self.name,
@@ -51,7 +51,8 @@ class Event: PostgresStORM {
             "eventType"     : self.eventType,
             "location"      : self.location,
             "eventDate"     : self.eventDate,
-            "criator"       : self.criator
+            "creator"       : self.criator,
+            "insertdate"    : self.insertdate
         ]
     }
 }

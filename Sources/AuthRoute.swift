@@ -23,11 +23,11 @@ func AuthRoute () -> Routes{
     
             let user = User()
             
-            let emailParam = request.param(name: "email")!
-            let passwordParam = request.param(name: "password")?.encrypt(.seed_ecb, password: "nearby", salt: "nearby", keyIterations: 250, keyDigest: .md5)
+            guard let emailParam = request.param(name: "email") , request.param(name: "email") != nil else { return }
             
+            guard let passwordParam = request.param(name: "password")?.encrypt(.seed_ecb, password: "nearby", salt: "nearby", keyIterations: 250, keyDigest: .md5) , (request.param(name: "password") != nil) else { return }
             
-            try user.find([("email",emailParam), ("password", passwordParam!)])
+            try user.find([("email",emailParam), ("password", passwordParam)])
             
             if user.id != 0 {
            

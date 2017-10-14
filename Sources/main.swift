@@ -33,14 +33,11 @@ server.addRoutes(authRoute)
 server.addRoutes(eventsRoute)
 server.addRoutes(eventsParticRoute)
 
-
 let requestFilters: [(HTTPRequestFilter, HTTPFilterPriority)] = [(authenticationFilter(), HTTPFilterPriority.high)]
 
 server.setRequestFilters(requestFilters)
 
-
 do {
-    // Launch the HTTP server
     try server.start()
 } catch PerfectError.networkError(let err, let msg) {
     print("Network error thrown: \(err) \(msg)")

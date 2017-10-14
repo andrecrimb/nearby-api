@@ -15,6 +15,7 @@ class User: PostgresStORM {
     var name        : String = ""
     var email       : String = ""
     var password    : String = ""
+    var image       : String = ""
     
     
     override open func table() -> String { return "users" }
@@ -24,6 +25,7 @@ class User: PostgresStORM {
         name        = this.data["name"]     as? String  ?? ""
         email       = this.data["email"]    as? String  ?? ""
         password    = this.data["password"] as? String  ?? ""
+        image       = this.data["image"]    as? String  ?? ""
     }
     
     func rows() -> [User] {
@@ -40,7 +42,8 @@ class User: PostgresStORM {
         return [
             "id"        : self.id,
             "name"      : self.name,
-            "email"     : self.email
+            "email"     : self.email,
+            "image"     : self.image,
         ]
     }
     

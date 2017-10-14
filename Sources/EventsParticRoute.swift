@@ -62,14 +62,15 @@ func EventsParticRoute() -> Routes{
                 try eventPartic.find([("idevent",idEvent)])
                 
                 var partics: [[String: Any]] = []
-                
                 var eventWithUserName : [String: Any]
                 
                 for row in eventPartic.rows(){
+
+                    print(row.uuid)
                     
-                    try user.get(user.id)
+                    try user.get(row.uuid)
                     
-                    print("\(user.rows()) ====")
+                    print(user.name)
                     
                     eventWithUserName = [
                         "id": row.id,
@@ -110,13 +111,10 @@ func EventsParticRoute() -> Routes{
                         try eventPartic.select(whereclause: "idevent = $1 and uuid = $2", params: [idEvent, uuid], orderby: [], cursor: cursor)
                         
                         if eventPartic.id != 0{
-                            
                             try eventPartic.delete(eventPartic.id)
-                           
                             try response.setBody(json: ["message": "DELETED"])
                                 .setHeader(.contentType, value: "application/json")
                                 .completed(status: .gone)
-                            
                         } else{
                             response.completed(status: .notFound)
                         }
@@ -124,56 +122,14 @@ func EventsParticRoute() -> Routes{
                 } else{
                     response.completed(status: .notFound)
                 }
-                
             }  else {
                   response.completed(status: .partialContent)
             }
-         
         } catch {
             response.setBody(string: "Error handling request \(error)")
                 .completed()
         }
     }
-    
-    
-    func getAllEventsByUUID(request: HTTPRequest, response: HTTPResponse){
-        do{
-            
-            let eventPartic = EventPartic()
-            let event       = Event()
-            
-            if let dict = userData as? Dictionary<String,AnyObject>{
-                if let userIdJWT = dict["id"]{
-                    try eventPartic.find([("uuid", userIdJWT)])
-                }
-            }
-            
-            var eventIDs: [Any] = []
-            
-            for row in eventPartic.rows(){
-                eventIDs.append(row.idevent)
-            }
-            
-            var eventList: [[String:Any]] = []
-            
-            for eventID in eventIDs{
-              
-                event.id = eventID as! Int
-                try event.get()
-                eventList.append(event.asDictionary())
-                
-            }
-            try response.setBody(json: eventList)
-                .setHeader(.contentType, value: "application/json")
-                .completed()
-        } catch {
-            response.setBody(string: "Error handling request \(error)")
-                .completed()
-        }
-        
-    }
-    
-    routes.add(method: .get, uri: "/partic_user_events", handler: getAllEventsByUUID)
     
     routes.add(method: .get, uri: "/partic/{id}", handler: getParticsByIdEvent)
     

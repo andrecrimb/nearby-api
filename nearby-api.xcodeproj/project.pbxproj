@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5444A9281F91BEC10006F88A /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444A9271F91BEC10006F88A /* Services.swift */; };
 		OBJ_1035 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Convenience.swift */; };
 		OBJ_1036 /* DataConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* DataConverters.swift */; };
 		OBJ_1037 /* Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Delete.swift */; };
@@ -1428,6 +1429,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5444A9271F91BEC10006F88A /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		"COpenSSL::COpenSSL::Product" /* COpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* DBConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBConnector.swift; sourceTree = "<group>"; };
 		OBJ_101 /* http_parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_parser.h; sourceTree = "<group>"; };
@@ -3365,7 +3367,7 @@
 			path = ".build/checkouts/SwiftMoment.git--2912679366309029826/Sources/SwiftMoment";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -3374,7 +3376,6 @@
 				OBJ_19 /* Dependencies */,
 				OBJ_859 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_54 /* PerfectXML 2.0.5 */ = {
@@ -3429,6 +3430,7 @@
 				OBJ_15 /* User.swift */,
 				OBJ_16 /* UsersRoute.swift */,
 				OBJ_17 /* main.swift */,
+				5444A9271F91BEC10006F88A /* Services.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -4154,7 +4156,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_859 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -5225,6 +5227,7 @@
 				OBJ_972 /* AuthFilter.swift in Sources */,
 				OBJ_973 /* AuthRoute.swift in Sources */,
 				OBJ_974 /* DBConnector.swift in Sources */,
+				5444A9281F91BEC10006F88A /* Services.swift in Sources */,
 				OBJ_975 /* Event.swift in Sources */,
 				OBJ_976 /* EventPartic.swift in Sources */,
 				OBJ_977 /* EventsParticRoute.swift in Sources */,

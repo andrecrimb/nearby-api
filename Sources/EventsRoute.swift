@@ -12,7 +12,7 @@ import PerfectHTTP
 import PerfectThread
 import StORM
 import PostgresStORM
-
+import Foundation
 
 func EventsRoute() -> Routes{
  
@@ -35,6 +35,7 @@ func EventsRoute() -> Routes{
             event.location      = request.param(name: "location")!
             event.eventDate     = request.param(name: "eventDate")!
             event.criator       = user.id
+            event.insertdate    = getTodayString()
             
             try event.save{ id in event.id = id as! Int }
             
@@ -99,13 +100,22 @@ func EventsRoute() -> Routes{
         do {
           
             let event = Event()
+            let user = User()
             
             try event.findAll()
             
             var events: [[String: Any]] = []
+            var singleEvent : [String: Any]
             
             for row in event.rows(){
-                events.append(row.asDictionary())
+                
+                try user.get(row.criator)
+                
+                singleEvent = row.asDictionary()
+                singleEvent["creatorName"] = user.name
+                singleEvent["imageCreator"] = user.image
+                
+                events.append(singleEvent)
             }
             
             try response.setBody(json: events)
@@ -116,19 +126,66 @@ func EventsRoute() -> Routes{
                 .completed(status: .internalServerError)
         }
     }
-    
+    func getAllEventsFilter(request: HTTPRequest, response: HTTPResponse){ //working
+        do {
+            print(getTodayString())
+            let event = Event()
+            let user = User()
+            
+            if let filter = request.urlVariables["eventType"]{
+                
+                try event.find([("eventtype",filter)])
+                
+                var events: [[String: Any]] = []
+                var singleEvent : [String: Any]
+                
+                for row in event.rows(){
+                    
+                    try user.get(row.criator)
+                    
+                    singleEvent = row.asDictionary()
+                    singleEvent["creatorName"] = user.name
+                    singleEvent["imageCreator"] = user.image
+                    
+                    events.append(singleEvent)
+                }
+                
+                try response.setBody(json: events)
+                    .setHeader(.contentType, value: "application/json")
+                    .completed()
+            } else {
+             response.completed(status: .preconditionFailed)
+            }
+        } catch {
+            response.setBody(string: "Error handling request \(error)")
+                .completed(status: .internalServerError)
+        }
+    }
     func getEventByID(request: HTTPRequest, response: HTTPResponse){ //working
         do {
     
             if let idObj = request.urlVariables["id"]{
                 
                 let event = Event()
+                let user        = User()
+                
+                if let dict = userData as? Dictionary<String,AnyObject>{
+                    if let userIdJWT = dict["id"]{
+                        try user.get(userIdJWT)
+                    }
+                }
                 
                 event.id = Int(idObj)!
                 
                 try event.get()
                 
-                try response.setBody(json: event.asDictionary())
+                var singleEvent: [String:Any]
+                
+                singleEvent = event.asDictionary()
+                singleEvent["nameCreator"] = user.name
+                singleEvent["imageCreator"] = user.image
+                
+                try response.setBody(json: singleEvent)
                     .setHeader(.contentType, value: "application/json")
                     .completed()
             } else {
@@ -144,18 +201,25 @@ func EventsRoute() -> Routes{
     func getEventByCriator(request: HTTPRequest, response: HTTPResponse){ //working
         do {
             
-            let event = Event()
+            let event       = Event()
+            let user        = User()
             
             if let dict = userData as? Dictionary<String,AnyObject>{
                 if let userIdJWT = dict["id"]{
                     try event.find([("criator",userIdJWT)])
+                    try user.get(userIdJWT)
                 }
             }
             
             var events: [[String: Any]] = []
+            var singleEvent: [String:Any]
             
             for row in event.rows(){
-                events.append(row.asDictionary())
+                singleEvent = row.asDictionary()
+                singleEvent["nameCreator"] = user.name
+                singleEvent["imageCreator"] = user.image
+                
+                events.append(singleEvent)
             }
             
             try response.setBody(json: events)
@@ -170,7 +234,6 @@ func EventsRoute() -> Routes{
     
     func deleteEventByID(request: HTTPRequest, response: HTTPResponse){ //WORKING
         do{
-    
             if let idObj = request.urlVariables["id"]{
                 let event = Event()
                 let eventPartic = EventPartic()
@@ -187,9 +250,7 @@ func EventsRoute() -> Routes{
                                 try eventPartic.delete(row.id)
                             }
                             
-                            try response.setBody(json: ["message": "DELETED"])
-                                .setHeader(.contentType, value: "application/json")
-                                .completed(status: .gone)
+                            try response.completed(status: .gone)
                         } else{
                             response.completed(status: .partialContent)
                         }
@@ -198,20 +259,69 @@ func EventsRoute() -> Routes{
             } else {
                   response.completed(status: .partialContent)
             }
-            
         } catch {
             response.setBody(string: "Error handling request \(error)")
             .completed()
         }
     }
     
+    func getAllEventsByUUID(request: HTTPRequest, response: HTTPResponse){
+        do{
+            
+            let eventPartic = EventPartic()
+            let event       = Event()
+            let user        = User()
+            
+            if let dict = userData as? Dictionary<String,AnyObject>{
+                if let userIdJWT = dict["id"]{
+                    try eventPartic.find([("uuid", userIdJWT)])
+                    try user.get(userIdJWT)
+                }
+            }
+            
+            var eventIDs: [Any] = []
+            
+            for row in eventPartic.rows(){
+                eventIDs.append(row.idevent)
+                
+                
+            }
+            
+            var eventList: [[String:Any]] = []
+            var singleEvent: [String:Any]
+            
+            for eventID in eventIDs{
+                event.id = eventID as! Int
+                try event.get()
+                
+                singleEvent = event.asDictionary()
+                singleEvent["nameCreator"] = user.name
+                singleEvent["imageCreator"] = user.image
+                
+                
+                
+                eventList.append(singleEvent)
+            }
+            try response.setBody(json: eventList)
+                .setHeader(.contentType, value: "application/json")
+                .completed()
+        } catch {
+            response.setBody(string: "Error handling request \(error)")
+                .completed()
+        }
+    }
+    
+    routes.add(method: .get, uri: "/partic_user_events", handler: getAllEventsByUUID)
+    
     routes.add(method: .get, uri: "/events", handler: getAllEvents)
     
-    routes.add(method: .delete, uri: "/events/{id}", handler: deleteEventByID)
+    routes.add(method: .get, uri: "/events/filter/{eventType}", handler: getAllEventsFilter)
     
     routes.add(method: .get, uri: "/events/{id}", handler: getEventByID)
     
     routes.add(method: .get, uri: "/my_events", handler: getEventByCriator)
+    
+    routes.add(method: .delete, uri: "/events/{id}", handler: deleteEventByID)
     
     routes.add(method: .patch, uri: "/events/{id}", handler: updateEventByID)
     

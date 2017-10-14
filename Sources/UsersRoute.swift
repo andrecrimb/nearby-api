@@ -12,22 +12,21 @@ func UsersRoute() -> Routes {
 
     func newUser (request: HTTPRequest, response: HTTPResponse) { //working
         do {
-            
-            let senhaParam = request.param(name: "password")!
+            print(request.params())
+            guard let senhaParam = request.param(name: "password") , request.param(name: "password") != nil else { return }
             
             let user = User()
+            
             user.name = request.param(name: "name")!
             user.email = request.param(name: "email")!
+            user.image = request.param(name: "image")!
             user.password = senhaParam.encrypt(.seed_ecb, password: "nearby", salt: "nearby", keyIterations: 250, keyDigest: .md5)!
             
             try user.find([("email", user.email)])
             
             if(user.id == 0){
                 try user.save{ id in user.id = id as! Int }
-                
-                try response.setBody(json: ["message": "INSERTED"])
-                    .setHeader(.contentType, value: "application/json")
-                    .completed(status: .created)
+                response.completed(status: .created)
             } else{
                 response.completed(status: .conflict)
             }
