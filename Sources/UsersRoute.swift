@@ -19,8 +19,10 @@ func UsersRoute() -> Routes {
             
             user.name = request.param(name: "name")!
             user.email = request.param(name: "email")!
-            user.image = request.param(name: "image")!
+            guard let image = request.param(name: "image"), request.param(name: "image") != nil else { return }
             user.password = senhaParam.encrypt(.seed_ecb, password: "nearby", salt: "nearby", keyIterations: 250, keyDigest: .md5)!
+            
+            user.image = image
             
             try user.find([("email", user.email)])
             

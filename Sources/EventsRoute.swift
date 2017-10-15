@@ -25,27 +25,31 @@ func EventsRoute() -> Routes{
             if let dict = userData as? Dictionary<String,AnyObject>{
                 if let userIdJWT = dict["id"]{
                     user.id = userIdJWT as! Int
+                    let event           = Event()
+                    event.name          = request.param(name: "name")!
+                    event.description   = request.param(name: "description")!
+                    event.eventType     = request.param(name: "eventType")!
+                    event.location      = request.param(name: "location")!
+                    event.eventDate     = request.param(name: "eventDate")!
+                    event.criator       = user.id
+                    event.insertdate    = getTodayString()
+                    
+                    try event.save{ id in event.id = id as! Int }
+                    
+                    let eventPartic     = EventPartic()
+                    eventPartic.uuid    = user.id
+                    try eventPartic.save{ id in eventPartic.id = id as! Int }
+                    
+                    try response.setBody(json: ["message": "CREATED"])
+                        .setHeader(.contentType, value: "application/json")
+                        .completed(status: .created)
+                } else {
+                    response.completed(status: .partialContent)
                 }
+            } else {
+                response.completed(status: .partialContent)
             }
             
-            let event           = Event()
-            event.name          = request.param(name: "name")!
-            event.description   = request.param(name: "description")!
-            event.eventType     = request.param(name: "eventType")!
-            event.location      = request.param(name: "location")!
-            event.eventDate     = request.param(name: "eventDate")!
-            event.criator       = user.id
-            event.insertdate    = getTodayString()
-            
-            try event.save{ id in event.id = id as! Int }
-            
-            let eventPartic     = EventPartic()
-            eventPartic.uuid    = user.id
-            try eventPartic.save{ id in eventPartic.id = id as! Int }
-    
-            try response.setBody(json: ["message": "CREATED"])
-                .setHeader(.contentType, value: "application/json")
-                .completed(status: .created)
             
         } catch {
             response.setBody(string: "Error handling request \(error)")
@@ -100,6 +104,7 @@ func EventsRoute() -> Routes{
         do {
           
             let event = Event()
+            let partic = EventPartic()
             let user = User()
             
             try event.findAll()
@@ -109,13 +114,25 @@ func EventsRoute() -> Routes{
             
             for row in event.rows(){
                 
-                try user.get(row.criator)
-                
-                singleEvent = row.asDictionary()
-                singleEvent["creatorName"] = user.name
-                singleEvent["imageCreator"] = user.image
-                
-                events.append(singleEvent)
+                if let dict = userData as? Dictionary<String,AnyObject>{
+                    if let userIdJWT = dict["id"]{
+                        try partic.find([("idevent",row.id), ("uuid",userIdJWT)])
+                        
+                        try user.get(row.criator)
+                        
+                        singleEvent = row.asDictionary()
+                        singleEvent["creatorName"] = user.name
+                        singleEvent["imageCreator"] = user.image
+                        singleEvent["number"] = "12"
+                        
+                        if partic.id != 0{
+                            singleEvent["part"] = true
+                        } else {
+                            singleEvent["part"] = false
+                        }
+                        events.append(singleEvent)
+                    }
+                }
             }
             
             try response.setBody(json: events)
@@ -146,6 +163,7 @@ func EventsRoute() -> Routes{
                     singleEvent = row.asDictionary()
                     singleEvent["creatorName"] = user.name
                     singleEvent["imageCreator"] = user.image
+                    singleEvent["number"] = "10"
                     
                     events.append(singleEvent)
                 }
@@ -166,28 +184,42 @@ func EventsRoute() -> Routes{
     
             if let idObj = request.urlVariables["id"]{
                 
-                let event = Event()
-                let user        = User()
+                let event  = Event()
+                let user   = User()
+                let partic = EventPartic()
                 
                 if let dict = userData as? Dictionary<String,AnyObject>{
                     if let userIdJWT = dict["id"]{
                         try user.get(userIdJWT)
+                        
+                        event.id = Int(idObj)!
+                        
+                        try event.get()
+                        
+                        var singleEvent: [String:Any]
+                        
+                        singleEvent = event.asDictionary()
+                        singleEvent["nameCreator"] = user.name
+                        singleEvent["imageCreator"] = user.image
+                        singleEvent["number"] = "12"
+                     
+                        try partic.find([("idevent",event.id), ("uuid",userIdJWT)])
+                        
+                        if partic.id != 0{
+                            singleEvent["part"] = true
+                        } else {
+                            singleEvent["part"] = false
+                        }
+                        
+                        try response.setBody(json: singleEvent)
+                            .setHeader(.contentType, value: "application/json")
+                            .completed()
+                    } else {
+                        response.completed(status: .expectationFailed)
                     }
+                } else {
+                     response.completed(status: .expectationFailed)
                 }
-                
-                event.id = Int(idObj)!
-                
-                try event.get()
-                
-                var singleEvent: [String:Any]
-                
-                singleEvent = event.asDictionary()
-                singleEvent["nameCreator"] = user.name
-                singleEvent["imageCreator"] = user.image
-                
-                try response.setBody(json: singleEvent)
-                    .setHeader(.contentType, value: "application/json")
-                    .completed()
             } else {
                 response.completed(status: .preconditionFailed)
             }
@@ -208,23 +240,31 @@ func EventsRoute() -> Routes{
                 if let userIdJWT = dict["id"]{
                     try event.find([("criator",userIdJWT)])
                     try user.get(userIdJWT)
+                    
+                    var events: [[String: Any]] = []
+                    var singleEvent: [String:Any]
+                    
+                    for row in event.rows(){
+                        singleEvent = row.asDictionary()
+                        singleEvent["nameCreator"] = user.name
+                        singleEvent["imageCreator"] = user.image
+                        singleEvent["number"] = "12"
+                        
+                        events.append(singleEvent)
+                    }
+                    
+                    try response.setBody(json: events)
+                        .setHeader(.contentType, value: "application/json")
+                        .completed()
+                    
+                } else {
+                    response.completed(status: .partialContent)
                 }
+            } else {
+                response.completed(status: .partialContent)
             }
             
-            var events: [[String: Any]] = []
-            var singleEvent: [String:Any]
-            
-            for row in event.rows(){
-                singleEvent = row.asDictionary()
-                singleEvent["nameCreator"] = user.name
-                singleEvent["imageCreator"] = user.image
-                
-                events.append(singleEvent)
-            }
-            
-            try response.setBody(json: events)
-                .setHeader(.contentType, value: "application/json")
-                .completed()
+    
         } catch {
             response.setBody(string: "Error handling request \(error)")
                 .completed(status: .internalServerError)
@@ -249,8 +289,7 @@ func EventsRoute() -> Routes{
                             for row in eventPartic.rows(){
                                 try eventPartic.delete(row.id)
                             }
-                            
-                            try response.completed(status: .gone)
+                            response.completed(status: .gone)
                         } else{
                             response.completed(status: .partialContent)
                         }
@@ -276,35 +315,37 @@ func EventsRoute() -> Routes{
                 if let userIdJWT = dict["id"]{
                     try eventPartic.find([("uuid", userIdJWT)])
                     try user.get(userIdJWT)
+                    
+                    var eventIDs: [Any] = []
+                    
+                    for row in eventPartic.rows(){
+                        eventIDs.append(row.idevent)
+                    }
+                    
+                    var eventList: [[String:Any]] = []
+                    var singleEvent: [String:Any]
+                    
+                    for eventID in eventIDs{
+                        event.id = eventID as! Int
+                        try event.get()
+                        
+                        singleEvent = event.asDictionary()
+                        singleEvent["nameCreator"] = user.name
+                        singleEvent["imageCreator"] = user.image
+                        singleEvent["number"] = "11"
+                        
+                        eventList.append(singleEvent)
+                    }
+                    try response.setBody(json: eventList)
+                        .setHeader(.contentType, value: "application/json")
+                        .completed()
+                } else {
+                    response.completed(status: .partialContent)
                 }
+            } else {
+                response.completed(status: .partialContent)
             }
             
-            var eventIDs: [Any] = []
-            
-            for row in eventPartic.rows(){
-                eventIDs.append(row.idevent)
-                
-                
-            }
-            
-            var eventList: [[String:Any]] = []
-            var singleEvent: [String:Any]
-            
-            for eventID in eventIDs{
-                event.id = eventID as! Int
-                try event.get()
-                
-                singleEvent = event.asDictionary()
-                singleEvent["nameCreator"] = user.name
-                singleEvent["imageCreator"] = user.image
-                
-                
-                
-                eventList.append(singleEvent)
-            }
-            try response.setBody(json: eventList)
-                .setHeader(.contentType, value: "application/json")
-                .completed()
         } catch {
             response.setBody(string: "Error handling request \(error)")
                 .completed()
