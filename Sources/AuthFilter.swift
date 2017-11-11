@@ -14,7 +14,7 @@ import PerfectCrypto
 struct authenticationFilter: HTTPRequestFilter {
     func filter(request: HTTPRequest, response: HTTPResponse, callback: (HTTPRequestFilterResult) -> ()) {
       //colocar uma expiracao no token
-        print(request.uri)
+        print(request.uri, request.method)
         print(userData)
         do{
             if !request.uri.contains(string: "/auth/login") && !request.uri.contains(string: "/users/new"){
@@ -24,9 +24,8 @@ struct authenticationFilter: HTTPRequestFilter {
                     guard let jwt = JWTVerifier(token) else {
                         return
                     }
-                    try jwt.verify(algo: .hs256, key: HMACKey("secret"))
                     
-                    print("\(token) --- Json")
+                    try jwt.verify(algo: .hs256, key: HMACKey("secret"))
                     
                     if let idUser = jwt.payload["id"] as? Int{
                         let user = User()
@@ -34,7 +33,9 @@ struct authenticationFilter: HTTPRequestFilter {
                         user.id = idUser
                     
                         try user.get()
-        
+                        
+                        print("USER DATA: \(userData)")
+                        
                         userData = user.asDictionary()
                         
                         callback(.continue(request, response))

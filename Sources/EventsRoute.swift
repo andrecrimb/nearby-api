@@ -59,12 +59,16 @@ func EventsRoute() -> Routes{
     
     func updateEventByID(request: HTTPRequest, response: HTTPResponse){ //working
         do {
-            let params = request.params()
+            
           
             if let idObj = request.urlVariables["id"]{
+           
+                let params = request.params()
+                
+                print(params)
                 
                 var objModel = [(String, Any)]()
-                
+
                 for (k,v) in params{
                     objModel.append((k,v))
                 }
@@ -121,7 +125,7 @@ func EventsRoute() -> Routes{
                         try user.get(row.criator)
                         
                         singleEvent = row.asDictionary()
-                        singleEvent["creatorName"] = user.name
+                        singleEvent["nameCreator"] = user.name
                         singleEvent["imageCreator"] = user.image
                         singleEvent["number"] = "12"
                         
@@ -161,7 +165,7 @@ func EventsRoute() -> Routes{
                     try user.get(row.criator)
                     
                     singleEvent = row.asDictionary()
-                    singleEvent["creatorName"] = user.name
+                    singleEvent["nameCreator"] = user.name
                     singleEvent["imageCreator"] = user.image
                     singleEvent["number"] = "10"
                     
@@ -364,7 +368,7 @@ func EventsRoute() -> Routes{
     
     routes.add(method: .delete, uri: "/events/{id}", handler: deleteEventByID)
     
-    routes.add(method: .patch, uri: "/events/{id}", handler: updateEventByID)
+    routes.add(method: .put, uri: "/events/{id}", handler: updateEventByID)
     
     routes.add(method: .post, uri: "/events", handler: createEvent)
     
